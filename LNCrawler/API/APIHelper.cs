@@ -27,12 +27,7 @@ public class APIHelper
             }
             response.EnsureSuccessStatusCode();
             var content = response.Content.ReadAsStringAsync().Result;
-            var novelswrapper = JsonConvert.DeserializeObject<NovelsWrapper>(content);
-            foreach (var novel in novelswrapper.Content.Values)
-            {
-                novel.Cover = "https://api.lncrawler.monster/image/" + novel.Cover;
-            }
-            return novelswrapper;
+            return JsonConvert.DeserializeObject<NovelsWrapper>(content)?.FixCovers();
         }
         catch (HttpRequestException)
         {

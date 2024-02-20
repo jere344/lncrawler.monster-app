@@ -162,14 +162,13 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
-                <Button Grid.Row="4" Grid.Column="1" Content="See more" Command="{Binding OpenNovelPage}" Tag="1" />
+                <Button Grid.Row="4" Grid.Column="1" Content="See more" Click="OpenNovelPage" Tag="1" />
             </Grid>
 
 
 
             <!-- Page navigation -->
             <Button Grid.Row="2" Grid.Column="0" Content="Previous" Command="{Binding LoadPreviousPageCommand}" />
-            <!-- <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CurrentPage}" /> -->
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CurrentPage}" HorizontalAlignment="Center" />
             <Button Grid.Row="2" Grid.Column="2" Content="Next" Command="{Binding LoadNextPageCommand}" />
         </Grid>

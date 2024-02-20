@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\2230460\Desktop\api 3\LNCrawler\App.xaml
-4593500482
+42002457766
 
-18-1406284363
+192041864482
 196876286469
-MainWindow.xaml;Views\Home.xaml;Views\Search.xaml;Views\ViewNovel.xaml;
+MainWindow.xaml;Views\Home.xaml;Views\Search.xaml;Views\ViewNovelInfo.xaml;
 
-False
+True
 

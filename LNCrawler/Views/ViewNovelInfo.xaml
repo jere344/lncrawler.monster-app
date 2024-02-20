@@ -1,0 +1,27 @@
+<Page x:Class="LNCrawler.Views.ViewNovelInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LNCrawler.Views"
+    mc:Ignorable="d" Title="ViewNovelInfo">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Source="{Binding Cover}" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
+    </Grid>
+</Page>

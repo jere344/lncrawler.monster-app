@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System;
 using LNCrawler.ViewModels;
+using LNCrawler.API.Models.Generic;
 
 namespace LNCrawler.Views
 {
@@ -36,14 +37,17 @@ namespace LNCrawler.Views
 
         private void OpenSearchPage(object sender, RoutedEventArgs e)
         {
-            // Example: Navigate to the LivresRetard page
             ((MainWindow)Application.Current.MainWindow)?.GetNavigationService().Navigate(new Uri("Views/Search.xaml", UriKind.Relative));
+        }
+
+        private void _OpenNovelPage(Novel novel)
+        {
+            ((MainWindow)Application.Current.MainWindow)?.GetNavigationService().Navigate(new Uri("Views/ViewNovelInfo.xaml?novelSlug=" + novel.Slug + "&sourceSlug=" + novel.PreferedSource, UriKind.Relative));
         }
 
         private void OpenNovelPage(object sender, RoutedEventArgs e)
         {
-            // Example: Navigate to the ComptesEtudiants page
-            ((MainWindow)Application.Current.MainWindow)?.GetNavigationService().Navigate(new Uri("Views/Novel.xaml", UriKind.Relative));
+            _OpenNovelPage((Novel)((Button)sender).DataContext);
         }
     }
 }
