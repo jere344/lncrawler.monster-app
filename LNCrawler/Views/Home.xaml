@@ -1,0 +1,177 @@
+<Page x:Class="LNCrawler.Views.Home"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LNCrawler.Views" mc:Ignorable="d" Title="Home">
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <!-- Navigation bar -->
+            <RowDefinition Height="0.1*" />
+            <!-- Main content -->
+            <RowDefinition Height="0.9*" />
+        </Grid.RowDefinitions>
+
+        <!-- Navigation bar Grid -->
+        <Grid Grid.Row="0">
+            <!-- <Button Grid.Row="0" x:Name="Search" Content="Open Search Page" Click="{Binding OpenSearchPage}" Margin="10, 5, 10, 5 "/> -->
+        </Grid>
+
+        <!-- Main content Grid -->
+        <Grid Grid.Row="1" x:Name="MainContent">
+            <!-- 6 novels, 3x2 -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="0.1*" /> <!-- Pagenav -->
+            </Grid.RowDefinitions>
+            <!-- A novel : 
+            left : cover
+            right : title, author, rank, number of chapters, see more button-->
+
+            <!-- Novel 1 -->
+            <Grid Grid.Row="0" Grid.Column="0" DataContext="{Binding Novel1}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Source="{Binding Cover}" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
+                <Button Grid.Row="4" Grid.Column="1" Content="See more" Command="{Binding OpenNovelPage}" Tag="0" />
+            </Grid>
+
+            <!-- Novel 2 -->
+            <Grid Grid.Row="0" Grid.Column="1" DataContext="{Binding Novel2}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Source="{Binding Cover}" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
+                <Button Grid.Row="4" Grid.Column="1" Content="See more" Command="{Binding OpenNovelPage}" Tag="1" />
+            </Grid>
+
+            <!-- Novel 3 -->
+            <Grid Grid.Row="0" Grid.Column="2" DataContext="{Binding Novel3}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Source="{Binding Cover}" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
+                <Button Grid.Row="4" Grid.Column="1" Content="See more" Command="{Binding OpenNovelPage}" Tag="1" />
+            </Grid>
+
+            <!-- Novel 4 -->
+            <Grid Grid.Row="1" Grid.Column="0" DataContext="{Binding Novel4}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Source="{Binding Cover}" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
+                <Button Grid.Row="4" Grid.Column="1" Content="See more" Command="{Binding OpenNovelPage}" Tag="1" />
+            </Grid>
+
+            <!-- Novel 5 -->
+            <Grid Grid.Row="1" Grid.Column="1" DataContext="{Binding Novel5}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Source="{Binding Cover}" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
+                <Button Grid.Row="4" Grid.Column="1" Content="See more" Command="{Binding OpenNovelPage}" Tag="1" />
+            </Grid>
+
+            <!-- Novel 6 -->
+            <Grid Grid.Row="1" Grid.Column="2" DataContext="{Binding Novel6}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Source="{Binding Cover}" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
+                <Button Grid.Row="4" Grid.Column="1" Content="See more" Command="{Binding OpenNovelPage}" Tag="1" />
+            </Grid>
+
+
+
+            <!-- Page navigation -->
+            <Button Grid.Row="2" Grid.Column="0" Content="Previous" Command="{Binding LoadPreviousPageCommand}" />
+            <!-- <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CurrentPage}" /> -->
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CurrentPage}" HorizontalAlignment="Center" />
+            <Button Grid.Row="2" Grid.Column="2" Content="Next" Command="{Binding LoadNextPageCommand}" />
+        </Grid>
+    </Grid>
+</Page>

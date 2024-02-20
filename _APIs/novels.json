@@ -1,0 +1,55 @@
+{
+    "content": {
+        "1": {
+            "author": "Sooji Kim",
+            "chapter_count": 411,
+            "clicks": 251006,
+            "comment_count": 102,
+            "cover": "under the oak tree/allnovelfull-com/cover.jpg",
+            "current_week_clicks": 429,
+            "language": "en",
+            "latest": "Chapter 413 - 174",
+            "overall_rating": 4.566666666666666,
+            "prefered_source": "allnovelfull-com",
+            "rank": 1,
+            "ratings_count": 30,
+            "slug": "under+the+oak+tree",
+            "source_count": 4,
+            "sources": {
+                "allnovelfull-com": "en",
+                "bestlightnovel-com": "en",
+                "novelnext-com": "en",
+                "readlightnovel-app": "en"
+            },
+            "title": "Under The Oak Tree",
+            "user_rating": null
+        },
+        "2": {
+            "author": "Gu Zhen Ren, \u86ca\u771f\u4eba",
+            "chapter_count": 2334,
+            "clicks": 185557,
+            "comment_count": 12,
+            "cover": "reverend insanity/mixednovel-net/cover.jpg",
+            "current_week_clicks": 878,
+            "language": "en",
+            "latest": "Chapter 2334 - Chapter 2334 - \u200cFang\u200c \u200cYuan\u200c \u200cAnd\u200c \u200cGiant\u200c \u200cSun\u200c \u200cFight\u200c \u200cStar\u200c \u200cConstellation\u200c \u200c\u200c",
+            "overall_rating": 4.565217391304348,
+            "prefered_source": "mixednovel-net",
+            "rank": 2,
+            "ratings_count": 23,
+            "slug": "reverend+insanity",
+            "source_count": 3,
+            "sources": {
+                "allnovelfull-com": "en",
+                "mixednovel-net": "en",
+                "readlightnovel-app": "en"
+            },
+            "title": "Reverend Insanity",
+            "user_rating": null
+        }
+    },
+    "metadata": {
+        "current_page": 0,
+        "total_pages": 1791
+    }
+}
