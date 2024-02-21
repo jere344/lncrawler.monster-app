@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System;
 using LNCrawler.ViewModels;
-using LNCrawler.API.Models.Generic;
+using LNCrawler.API.Models;
 
 namespace LNCrawler.Views
 {

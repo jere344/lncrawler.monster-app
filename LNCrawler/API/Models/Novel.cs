@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace LNCrawler.API.Models.Generic;
+namespace LNCrawler.API.Models;
 #nullable disable
 public class Novel
 {
@@ -18,7 +18,11 @@ public class Novel
     public int CommentCount { get; set; }
 
     [JsonProperty("cover")]
-    public string Cover { get; set; }
+    private string _Cover { get; set; }
+    public string Cover
+    {
+        get => "https://api.lncrawler.monster/image/" + _Cover;
+    }
 
     [JsonProperty("current_week_clicks")]
     public int CurrentWeekClicks { get; set; }
@@ -36,7 +40,11 @@ public class Novel
     public string Latest { get; set; }
 
     [JsonProperty("overall_rating")]
-    public double OverallRating { get; set; }
+    private double _OverallRating { get; set; }
+    public string OverallRating
+    {
+        get => _OverallRating.ToString("0.0");
+    }
 
     [JsonProperty("prefered_source")]
     public string PreferedSource { get; set; }
@@ -48,9 +56,12 @@ public class Novel
     public string Slug { get; set; }
 
     [JsonProperty("tags")]
-    public List<string> Tags { get; set; }
+    private List<string> _Tags { get; set; }
+    public string Tags
+    {
+        get => string.Join(", ", _Tags);
+    }
 
     [JsonProperty("title")]
     public string Title { get; set; }
-
 }

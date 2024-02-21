@@ -1,6 +1,5 @@
 using LNCrawler.API;
 using LNCrawler.API.Models;
-using LNCrawler.API.Models.Generic;
 using System.Collections.Generic;
 
 namespace LNCrawler.Models;

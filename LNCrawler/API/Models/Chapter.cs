@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace LNCrawler.API.Models.Generic;
+namespace LNCrawler.API.Models;
 
 // stop nullable warnings :
 #nullable disable

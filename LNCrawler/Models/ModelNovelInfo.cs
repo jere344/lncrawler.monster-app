@@ -1,6 +1,5 @@
 using LNCrawler.API;
 using LNCrawler.API.Models;
-using LNCrawler.API.Models.Generic;
 using System.Collections.Generic;
 
 namespace LNCrawler.Models;
@@ -12,6 +11,6 @@ public class ModelNovelInfo
 
     public ModelNovelInfo(string novelSlug, string sourceSlug)
     {
-        Novel = this.APIHelper.GetNovelAsync(novelSlug, sourceSlug).Result;
+        Novel = this.APIHelper.GetNovel(novelSlug, sourceSlug);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using LNCrawler.Models;
-using LNCrawler.API.Models.Generic;
+using LNCrawler.API.Models;
 
 namespace LNCrawler.ViewModels;
 

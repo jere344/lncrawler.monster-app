@@ -3,25 +3,96 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:LNCrawler.Views"
-    mc:Ignorable="d" Title="ViewNovelInfo">
+    xmlns:local="clr-namespace:LNCrawler.Views" mc:Ignorable="d" Title="ViewNovelInfo">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <!-- First (first chapter title), Url, Rank, LNCrawlerUrl-->
+
+    <Grid DataContext="{Binding Novel}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Source="{Binding Cover}" />
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding Cover}" Width="200" Height="200" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" FontSize="24" FontWeight="Bold" />
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Author:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Author}" />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Rating:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Novel.OverallRating}" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Chapter Count:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ChapterCount}" />
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Language:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Language}" />
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Views:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Novel.Clicks}" />
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="First:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding First}" />
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Last Update Date:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding LastUpdateDate}" />
+
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="Rank:" FontWeight="Bold"/>
+            <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding Novel.Rank}" />
+
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="LNCrawler Url:" FontWeight="Bold"/>
+            <Button Grid.Row="8" Grid.Column="1" Content="Open LNCrawler Website" Click="OpenInLNCrawlerWebsite" Width="150" />
+
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="Source Url:" FontWeight="Bold"/>
+            <Button Grid.Row="9" Grid.Column="1" Content="Open Source" Click="OpenSourceWebsite" Width="150" />
+
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Summary:" FontWeight="Bold" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Summary}" TextWrapping="Wrap" />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Tags:" FontWeight="Bold" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Tags}" TextWrapping="Wrap" />
+        </Grid>
     </Grid>
+
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5, 1, 5, 1"/>
+        </Style>
+        <Style TargetType="Image">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Page.Resources>
 </Page>

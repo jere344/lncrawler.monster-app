@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using LNCrawler.API.Models;
 using System.Collections.Generic;
-using LNCrawler.API.Models.Generic;
 using System.Threading;
 using System;
 
@@ -27,7 +26,7 @@ public class APIHelper
             }
             response.EnsureSuccessStatusCode();
             var content = response.Content.ReadAsStringAsync().Result;
-            return JsonConvert.DeserializeObject<NovelsWrapper>(content)?.FixCovers();
+            return JsonConvert.DeserializeObject<NovelsWrapper>(content);
         }
         catch (HttpRequestException)
         {
@@ -35,14 +34,14 @@ public class APIHelper
         }
     }
 
-    public async Task<NovelFromSource?> GetNovelAsync(string novelSlug, string sourceSlug)
+    public NovelFromSource? GetNovel(string novelSlug, string sourceSlug)
     {
         try
         {
             using var client = new HttpClient();
-            var response = await client.GetAsync($"https://api.lncrawler.monster/novel?novel={novelSlug}&source={sourceSlug}");
+            var response = client.GetAsync($"https://api.lncrawler.monster/novel?novel={novelSlug}&source={sourceSlug}").Result;
             response.EnsureSuccessStatusCode();
-            var content = await response.Content.ReadAsStringAsync();
+            var content = response.Content.ReadAsStringAsync().Result;
             return JsonConvert.DeserializeObject<NovelFromSource>(content);
         }
         catch (HttpRequestException)

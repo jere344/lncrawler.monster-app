@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using LNCrawler.API.Models.Generic;
 
 namespace LNCrawler.API.Models;
 #nullable disable
