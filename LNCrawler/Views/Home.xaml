@@ -3,7 +3,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:LNCrawler.Views" mc:Ignorable="d" Title="Home">
+    xmlns:local="clr-namespace:LNCrawler.Views" mc:Ignorable="d" Title="Home"
+    Background="{DynamicResource BackgroundBrush}"
+    >
 
 
     <Grid>
@@ -19,7 +21,23 @@
 
         <!-- Navigation bar Grid -->
         <Grid Grid.Row="0">
-            <!-- <Button Grid.Row="0" x:Name="Search" Content="Open Search Page" Click="{Binding OpenSearchPage}" Margin="10, 5, 10, 5 "/> -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- radio to switch dark theme -->
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <RadioButton Grid.Column="0" Content="Light" IsChecked="{Binding IsLightTheme, Mode=TwoWay}" />
+                <RadioButton Grid.Column="1" Content="Dark" IsChecked="{Binding IsDarkTheme, Mode=TwoWay}" />
+            </Grid>
+
+            <!-- drop down to switch language -->
+            <ComboBox Grid.Column="1" ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" Height="20" Width="100" />
         </Grid>
 
         <!-- Main content Grid -->
@@ -33,7 +51,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="0.1*" /> <!-- Pagenav -->
+                <RowDefinition Height="0.1*" />
+                <!-- Pagenav -->
             </Grid.RowDefinitions>
             <!-- A novel : 
             left : cover
@@ -168,9 +187,29 @@
 
 
             <!-- Page navigation -->
-            <Button Grid.Row="2" Grid.Column="0" Content="{DynamicResource previous}"  Command="{Binding LoadPreviousPageCommand}" IsEnabled="{Binding CanLoadPreviousPage}" />
+            <Button Grid.Row="2" Grid.Column="0" Content="{DynamicResource previous}" Command="{Binding LoadPreviousPageCommand}" IsEnabled="{Binding CanLoadPreviousPage}" />
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CurrentPage}" HorizontalAlignment="Center" />
             <Button Grid.Row="2" Grid.Column="2" Content="{DynamicResource next}" Command="{Binding LoadNextPageCommand}" IsEnabled="{Binding CanLoadNextPage}" />
         </Grid>
     </Grid>
+
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="{DynamicResource AccentForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="{DynamicResource AccentForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+        </Style>
+        
+    </Page.Resources>
 </Page>

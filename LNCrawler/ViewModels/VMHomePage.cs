@@ -4,6 +4,9 @@ using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using LNCrawler.Models;
 using LNCrawler.API.Models;
+using System.Windows;
+using System;
+using System.Linq;
 
 namespace LNCrawler.ViewModels;
 
@@ -61,6 +64,7 @@ public class VMHomePage : ObservableObject
         LoadPageCommand = new RelayCommand<int>(LoadPage);
         LoadNextPageCommand = new RelayCommand(LoadNextPage);
         LoadPreviousPageCommand = new RelayCommand(LoadPreviousPage);
+        SetTheme();
     }
 
     public void LoadPage(int page)
@@ -94,4 +98,38 @@ public class VMHomePage : ObservableObject
         OnPropertyChanged(nameof(CanLoadPreviousPage));
     }
 
+    // We store the theme in the application properties
+    // if never set, we default to light theme
+    private bool _IsDarktheme = Application.Current.Properties["IsDarkTheme"] != null && (bool)(Application.Current.Properties["IsDarkTheme"] ?? false);
+    public bool IsDarkTheme
+    {
+        get => _IsDarktheme;
+        set
+        {
+            _IsDarktheme = value;
+            Application.Current.Properties["IsDarkTheme"] = value;
+            SetTheme();
+        }
+    }
+
+    public void SetTheme()
+    {
+        if (IsDarkTheme)
+        {
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri(".\\Resources\\DarkTheme.xaml", UriKind.Relative) });
+        }
+        else
+        {
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri(".\\Resources\\LightTheme.xaml", UriKind.Relative) });
+        }
+    }
+
+    public bool IsLightTheme
+    {
+        get => !IsDarkTheme;
+        set
+        {
+            IsDarkTheme = !value;
+        }
+    }
 }
