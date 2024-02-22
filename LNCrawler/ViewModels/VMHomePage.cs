@@ -44,6 +44,17 @@ public class VMHomePage : ObservableObject
     public ICommand LoadNextPageCommand { get; set; }
     public ICommand LoadPreviousPageCommand { get; set; }
 
+    public bool CanLoadPreviousPage
+    {
+        get => _modelHome.CurrentPage >= 1;
+    }
+
+
+    public bool CanLoadNextPage
+    {
+        get => _modelHome.CurrentPage < _modelHome.TotalPages;
+    }
+
     public VMHomePage()
     {
         _modelHome = new ModelHome();
@@ -79,6 +90,8 @@ public class VMHomePage : ObservableObject
         OnPropertyChanged(nameof(Novel5));
         OnPropertyChanged(nameof(Novel6));
         OnPropertyChanged(nameof(CurrentPage));
+        OnPropertyChanged(nameof(CanLoadNextPage));
+        OnPropertyChanged(nameof(CanLoadPreviousPage));
     }
 
 }

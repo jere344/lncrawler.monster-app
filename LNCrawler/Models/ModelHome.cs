@@ -10,6 +10,7 @@ public class ModelHome
     public int NovelPerPage = 6;
     public int CurrentPage = 2;
     private readonly APIHelper APIHelper = new();
+    public int TotalPages = 0;
 
     public ModelHome()
     {
@@ -38,6 +39,7 @@ public class ModelHome
                 }
                 Pages.Add(page.ToString(), novels);
                 CurrentPage = page;
+                TotalPages = novelsWrapper.Metadata.TotalPages;
             }
         }
     }

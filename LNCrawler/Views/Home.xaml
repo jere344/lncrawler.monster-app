@@ -168,9 +168,9 @@
 
 
             <!-- Page navigation -->
-            <Button Grid.Row="2" Grid.Column="0" Content="{DynamicResource previous}"  Command="{Binding LoadPreviousPageCommand}" />
+            <Button Grid.Row="2" Grid.Column="0" Content="{DynamicResource previous}"  Command="{Binding LoadPreviousPageCommand}" IsEnabled="{Binding CanLoadPreviousPage}" />
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CurrentPage}" HorizontalAlignment="Center" />
-            <Button Grid.Row="2" Grid.Column="2" Content="{DynamicResource next}" Command="{Binding LoadNextPageCommand}" />
+            <Button Grid.Row="2" Grid.Column="2" Content="{DynamicResource next}" Command="{Binding LoadNextPageCommand}" IsEnabled="{Binding CanLoadNextPage}" />
         </Grid>
     </Grid>
 </Page>
