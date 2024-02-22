@@ -3,6 +3,8 @@ using System.Windows.Controls;
 using System;
 using LNCrawler.ViewModels;
 using LNCrawler.API.Models;
+using System.Windows.Navigation;
+using System.Threading;
 
 namespace LNCrawler.Views
 {
@@ -17,6 +19,7 @@ namespace LNCrawler.Views
 
             // Subscribe to the Loaded event to set the title and size of the window
             this.Loaded += Home_Loaded;
+            SetLanguageDictionary();
         }
 
         /// <summary>
@@ -48,6 +51,24 @@ namespace LNCrawler.Views
         private void OpenNovelPage(object sender, RoutedEventArgs e)
         {
             _OpenNovelPage((Novel)((Button)sender).DataContext);
+        }
+
+        private void SetLanguageDictionary()
+        {
+            ResourceDictionary dict = new ResourceDictionary();
+            switch (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName)
+            {
+                case "en":
+                    dict.Source = new Uri(".\\Resources\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+                case "fr":
+                    dict.Source = new Uri(".\\Resources\\StringResources.fr.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dict.Source = new Uri(".\\Resources\\StringResources.en.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dict);
         }
     }
 }

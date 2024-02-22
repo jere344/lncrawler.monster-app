@@ -37,7 +37,7 @@
             </Grid.RowDefinitions>
             <!-- A novel : 
             left : cover
-            right : title, author, rank, number of chapters, see more button-->
+            right : title, author, rank, number of chapters, {DynamicResource seeMore} button-->
 
             <!-- Novel 1 -->
             <Grid Grid.Row="0" Grid.Column="0" DataContext="{Binding Novel1}">
@@ -57,7 +57,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
-                <Button Grid.Row="4" Grid.Column="1" Content="See more" Click="OpenNovelPage"/>
+                <Button Grid.Row="4" Grid.Column="1" Content="{DynamicResource seeMore}" Click="OpenNovelPage"/>
             </Grid>
 
             <!-- Novel 2 -->
@@ -78,7 +78,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
-                <Button Grid.Row="4" Grid.Column="1" Content="See more" Click="OpenNovelPage" />
+                <Button Grid.Row="4" Grid.Column="1" Content="{DynamicResource seeMore}" Click="OpenNovelPage" />
             </Grid>
 
             <!-- Novel 3 -->
@@ -99,7 +99,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
-                <Button Grid.Row="4" Grid.Column="1" Content="See more" Click="OpenNovelPage" />
+                <Button Grid.Row="4" Grid.Column="1" Content="{DynamicResource seeMore}" Click="OpenNovelPage" />
             </Grid>
 
             <!-- Novel 4 -->
@@ -120,7 +120,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
-                <Button Grid.Row="4" Grid.Column="1" Content="See more" Click="OpenNovelPage" />
+                <Button Grid.Row="4" Grid.Column="1" Content="{DynamicResource seeMore}" Click="OpenNovelPage" />
             </Grid>
 
             <!-- Novel 5 -->
@@ -141,7 +141,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
-                <Button Grid.Row="4" Grid.Column="1" Content="See more" Click="OpenNovelPage" />
+                <Button Grid.Row="4" Grid.Column="1" Content="{DynamicResource seeMore}" Click="OpenNovelPage" />
             </Grid>
 
             <!-- Novel 6 -->
@@ -162,15 +162,15 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Author}" />
                 <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Rank}" />
                 <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding ChapterCount}" />
-                <Button Grid.Row="4" Grid.Column="1" Content="See more" Click="OpenNovelPage" />
+                <Button Grid.Row="4" Grid.Column="1" Content="{DynamicResource seeMore}" Click="OpenNovelPage" />
             </Grid>
 
 
 
             <!-- Page navigation -->
-            <Button Grid.Row="2" Grid.Column="0" Content="Previous" Command="{Binding LoadPreviousPageCommand}" />
+            <Button Grid.Row="2" Grid.Column="0" Content="{DynamicResource previous}"  Command="{Binding LoadPreviousPageCommand}" />
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CurrentPage}" HorizontalAlignment="Center" />
-            <Button Grid.Row="2" Grid.Column="2" Content="Next" Command="{Binding LoadNextPageCommand}" />
+            <Button Grid.Row="2" Grid.Column="2" Content="{DynamicResource next}" Command="{Binding LoadNextPageCommand}" />
         </Grid>
     </Grid>
 </Page>
