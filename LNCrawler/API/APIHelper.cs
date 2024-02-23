@@ -10,11 +10,11 @@ namespace LNCrawler.API;
 
 public class APIHelper
 {
-    public NovelsWrapper? GetNovels(int page, int number = 6, List<string>? tags = null)
+    private NovelsWrapper? _GetNovels(int page, int number = 6, List<string>? tags = null)
     {
         try
         {
-            using var client = new HttpClient() { Timeout = TimeSpan.FromSeconds(3) };
+            using var client = new HttpClient() { Timeout = TimeSpan.FromSeconds(5) };
             HttpResponseMessage response;
             if (tags == null)
             {
@@ -32,33 +32,37 @@ public class APIHelper
         {
             return null;
         }
+        catch (TaskCanceledException)
+        {
+            return null;
+        }
+    }
+
+    public NovelsWrapper? GetNovels(int page, int number = 6, List<string>? tags = null, int retries = 1)
+    {
+        for (int i = 0; i < retries; i++)
+        {
+            var novelsWrapper = _GetNovels(page, number, tags);
+            if (novelsWrapper != null)
+            {
+                return novelsWrapper;
+            }
+            Thread.Sleep(500);
+        }
+        throw new HttpRequestException("Failed to get novels");
     }
 
     public NovelFromSource? GetNovel(string novelSlug, string sourceSlug)
     {
         try
         {
+            //  timeout after 3 seconds
             using var client = new HttpClient();
+            client.Timeout = TimeSpan.FromSeconds(3);
             var response = client.GetAsync($"https://api.lncrawler.monster/novel?novel={novelSlug}&source={sourceSlug}").Result;
             response.EnsureSuccessStatusCode();
             var content = response.Content.ReadAsStringAsync().Result;
             return JsonConvert.DeserializeObject<NovelFromSource>(content);
-        }
-        catch (HttpRequestException)
-        {
-            return null;
-        }
-    }
-
-    public async Task<Chapter?> GetChapterAsync(string novelSlug, string sourceSlug, int chapter)
-    {
-        try
-        {
-            using var client = new HttpClient();
-            var response = await client.GetAsync($"https://api.lncrawler.monster/chapter?novel={novelSlug}&source={sourceSlug}&chapter={chapter}");
-            response.EnsureSuccessStatusCode();
-            var content = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Chapter>(content);
         }
         catch (HttpRequestException)
         {

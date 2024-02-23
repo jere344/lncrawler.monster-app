@@ -16,6 +16,7 @@ namespace LNCrawler
         {
             base.OnStartup(e);
             SetLanguageDictionary();
+            LoadSettings();
         }
 
 
@@ -35,6 +36,45 @@ namespace LNCrawler
                     break;
             }
             this.Resources.MergedDictionaries.Add(dict);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            SaveSettings();
+        }
+
+        public static void SaveSettings()
+        {
+            // we save Application.Current.Properties in settings.json
+            // we can load it at startup
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(Application.Current.Properties);
+            System.IO.File.WriteAllText("settings.json", json);
+        }
+
+        public static void LoadSettings()
+        {
+            // we load Application.Current.Properties from settings.json
+            // we can load it at startup
+            if (System.IO.File.Exists("settings.json"))
+            {
+                string json = System.IO.File.ReadAllText("settings.json");
+                var values = Newtonsoft.Json.JsonConvert.DeserializeObject<System.Collections.IDictionary>(json);
+                if (values == null)
+                {
+                    return;
+                }
+                foreach (var key in values.Keys)
+                {
+                    var str_key = key.ToString();
+                    if (str_key == null)
+                    {
+                        continue;
+                    }
+                    Application.Current.Properties[str_key] = values[key];
+                }
+
+            }
         }
     }
 }

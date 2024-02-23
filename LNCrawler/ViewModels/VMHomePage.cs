@@ -67,6 +67,10 @@ public class VMHomePage : ObservableObject
         LoadNextPageCommand = new RelayCommand(LoadNextPage);
         LoadPreviousPageCommand = new RelayCommand(LoadPreviousPage);
         SetTheme();
+
+        // Define Thread culture depending on the selected language
+        // It may looks useless, but it's not
+        Language = Language;
     }
 
     public void LoadPage(int page)
@@ -141,9 +145,10 @@ public class VMHomePage : ObservableObject
 
     public static string Language
     {
-        get => Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+        get => Application.Current.Properties["Language"] != null ? (string)(Application.Current.Properties["Language"] ?? Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName) : Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
         set
         {
+            Application.Current.Properties["Language"] = value;
             Thread.CurrentThread.CurrentCulture = new CultureInfo(value);
             ((App)Application.Current).SetLanguageDictionary();
         }

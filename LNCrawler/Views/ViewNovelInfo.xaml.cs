@@ -19,11 +19,33 @@ namespace LNCrawler.Views
         }
 
         /// <summary>
-        /// Set the title and size of the window
+        /// Wrapper to catch exceptions
+        /// Go back to the previous page if an exception is thrown
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ViewNovelInfo_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                _ViewNovelInfo_Loaded(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                if (NavigationService.CanGoBack)
+                {
+                    NavigationService.GoBack();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Set the title and size of the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _ViewNovelInfo_Loaded(object sender, RoutedEventArgs e)
         {
             // get parameters from the URL
             var navigationService = ((MainWindow)Application.Current.MainWindow)?.GetNavigationService();

@@ -1,6 +1,8 @@
 using LNCrawler.API;
 using LNCrawler.API.Models;
+using System;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace LNCrawler.Models;
 
@@ -8,7 +10,16 @@ public class ModelHome
 {
     public Dictionary<string, List<Novel>> Pages { get; set; }
     public int NovelPerPage = 6;
-    public int CurrentPage = 2;
+    private int _CurrentPage = Application.Current.Properties["CurrentPage"] != null ? Convert.ToInt32(Application.Current.Properties["CurrentPage"]) : 0;
+    public int CurrentPage
+    {
+        get => _CurrentPage;
+        set
+        {
+            _CurrentPage = value;
+            Application.Current.Properties["CurrentPage"] = value;
+        }
+    }
     private readonly APIHelper APIHelper = new();
     public int TotalPages = 0;
 
