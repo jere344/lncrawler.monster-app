@@ -65,7 +65,7 @@ namespace LNCrawler.Views
             Window window = Window.GetWindow(this);
             if (window != null)
             {
-                window.Title = vm.Novel?.Title ?? "LNCrawler";
+                window.Title = "LNCrawler - " + vm.Novel?.Title;
             }
         }
 
@@ -96,6 +96,14 @@ namespace LNCrawler.Views
                     e.Handled = true;
                 }
             }
+        }
+    
+        private void StartReading(object sender, RoutedEventArgs e)
+        {
+            string novelSlug = ((VMNovelInfoPage)DataContext).NovelSlug;
+            string sourceSlug = ((VMNovelInfoPage)DataContext).SourceSlug;
+
+            ((MainWindow)Application.Current.MainWindow)?.GetNavigationService().Navigate(new Uri("Views/ViewChapter.xaml?novelSlug=" + novelSlug + "&sourceSlug=" + sourceSlug, UriKind.Relative));
         }
     }
 }

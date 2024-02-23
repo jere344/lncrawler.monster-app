@@ -10,6 +10,7 @@ namespace LNCrawler.API;
 
 public class APIHelper
 {
+    public string APIUrl { get; set; } = "https://api.lncrawler.monster";
     private NovelsWrapper? _GetNovels(int page, int number = 6, List<string>? tags = null)
     {
         try
@@ -18,11 +19,11 @@ public class APIHelper
             HttpResponseMessage response;
             if (tags == null)
             {
-                response = client.GetAsync($"https://api.lncrawler.monster/novels?page={page}&number={number}").Result;
+                response = client.GetAsync($"{APIUrl}/novels?page={page}&number={number}").Result;
             }
             else
             {
-                response = client.GetAsync($"https://api.lncrawler.monster/novels?page={page}&number={number}&tags={string.Join(",", tags)}").Result;
+                response = client.GetAsync($"{APIUrl}/novels?page={page}&number={number}&tags={string.Join(",", tags)}").Result;
             }
             response.EnsureSuccessStatusCode();
             var content = response.Content.ReadAsStringAsync().Result;
@@ -56,13 +57,29 @@ public class APIHelper
     {
         try
         {
-            //  timeout after 3 seconds
             using var client = new HttpClient();
             client.Timeout = TimeSpan.FromSeconds(3);
-            var response = client.GetAsync($"https://api.lncrawler.monster/novel?novel={novelSlug}&source={sourceSlug}").Result;
+            var response = client.GetAsync($"{APIUrl}/novel?novel={novelSlug}&source={sourceSlug}").Result;
             response.EnsureSuccessStatusCode();
             var content = response.Content.ReadAsStringAsync().Result;
             return JsonConvert.DeserializeObject<NovelFromSource>(content);
+        }
+        catch (HttpRequestException)
+        {
+            return null;
+        }
+    }
+
+    public ChapterWrapper? GetChapter(string novelSlug, string sourceSlug, int chapter)
+    {
+        try
+        {
+            using var client = new HttpClient();
+            client.Timeout = TimeSpan.FromSeconds(3);
+            var response = client.GetAsync($"{APIUrl}/chapter/?novel={novelSlug}&source={sourceSlug}&chapter={chapter}").Result;
+            response.EnsureSuccessStatusCode();
+            var content = response.Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<ChapterWrapper>(content);
         }
         catch (HttpRequestException)
         {

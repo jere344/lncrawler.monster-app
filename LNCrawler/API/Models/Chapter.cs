@@ -9,7 +9,15 @@ namespace LNCrawler.API.Models;
 public class Chapter
 {
     [JsonProperty("body")]
-    public string Body { get; set; }
+    private string _Body { get; set; }
+    public string Body
+    {
+        get
+        {
+            // remove html tags. There probably is a way to load the html in a webview and get the text from it, but this is easier for the exercise
+            return _Body.Replace("<br>", "\n").Replace("<p>", "").Replace("</p>", "\n").Replace("<br />", "\n").Replace("<br/>", "\n").Replace("<b>", "").Replace("</b>", "").Replace("<i>", "").Replace("</i>", "").Replace("<div>", "").Replace("</div>", "").Replace("<span>", "").Replace("</span>", "").Replace("<em>", "").Replace("</em>", "").Replace("<strong>", "").Replace("</strong>", "").Replace("<u>", "").Replace("</u>", "").Replace("<h1>", "").Replace("</h1>", "").Replace("<h2>", "").Replace("</h2>", "").Replace("<h3>", "").Replace("</h3>", "").Replace("<h4>", "").Replace("</h4>", "").Replace("<h5>", "").Replace("</h5>", "").Replace("<h6>", "").Replace("</h6>", "").Replace("<hr>", "");
+        }
+    }
 
     [JsonProperty("id")]
     public int Id { get; set; }

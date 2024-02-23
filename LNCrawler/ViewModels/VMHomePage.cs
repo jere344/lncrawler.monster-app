@@ -104,9 +104,6 @@ public class VMHomePage : ObservableObject
         OnPropertyChanged(nameof(CanLoadPreviousPage));
     }
 
-    // if we want to store the theme settings between restarts
-    // We can just store Application.Current.Properties in a file and load it at startup
-
 
     // We store the theme in the application properties
     // if never set, we default to dark theme

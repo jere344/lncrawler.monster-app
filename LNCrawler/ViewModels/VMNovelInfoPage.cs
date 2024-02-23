@@ -10,6 +10,8 @@ namespace LNCrawler.ViewModels;
 public class VMNovelInfoPage : ObservableObject
 {
     private readonly ModelNovelInfo _modelNovelInfo;
+    public string NovelSlug;
+    public string SourceSlug;
     public NovelFromSource? Novel
     {
         get => _modelNovelInfo.Novel;
@@ -17,6 +19,8 @@ public class VMNovelInfoPage : ObservableObject
 
     public VMNovelInfoPage(string novelSlug, string sourceSlug)
     {
+        NovelSlug = novelSlug;
+        SourceSlug = sourceSlug;
         _modelNovelInfo = new ModelNovelInfo(novelSlug, sourceSlug);
     }
 }

@@ -19,4 +19,5 @@
     <system:String x:Key="openSource">Open source</system:String>
     <system:String x:Key="openLNCrawler">Open LNCrawler</system:String>
     <system:String x:Key="summary">Synopsis:</system:String>
+    <system:String x:Key="startReading">Start reading</system:String>
 </ResourceDictionary>
