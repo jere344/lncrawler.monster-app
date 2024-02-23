@@ -33,7 +33,7 @@ namespace LNCrawler.Views
 
             if (window != null)
             {
-                window.Title = "Accueil";
+                window.Title = "LNCrawler";
             }
         }
 

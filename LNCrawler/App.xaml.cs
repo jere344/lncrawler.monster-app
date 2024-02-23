@@ -19,7 +19,7 @@ namespace LNCrawler
         }
 
 
-        private void SetLanguageDictionary()
+        public void SetLanguageDictionary()
         {
             ResourceDictionary dict = new ResourceDictionary();
             switch (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName)

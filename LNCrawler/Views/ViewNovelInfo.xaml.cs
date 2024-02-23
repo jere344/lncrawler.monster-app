@@ -15,7 +15,7 @@ namespace LNCrawler.Views
 
             // Subscribe to the Loaded event to set the title and size of the window
             this.Loaded += ViewNovelInfo_Loaded;
- 
+
         }
 
         /// <summary>
@@ -25,20 +25,11 @@ namespace LNCrawler.Views
         /// <param name="e"></param>
         private void ViewNovelInfo_Loaded(object sender, RoutedEventArgs e)
         {
-            // Get a reference to the parent window, we can't call Window.GetWindow(this) in the constructor because the window is not yet created
-            Window window = Window.GetWindow(this);
-
-            if (window != null)
-            {
-                window.Title = "ViewNovelInfo";
-            }
-
-
             // get parameters from the URL
             var navigationService = ((MainWindow)Application.Current.MainWindow)?.GetNavigationService();
             if (navigationService == null)
             {
-                throw new Exception("Navigation service not found");            
+                throw new Exception("Navigation service not found");
             }
             // after the ?  
             //      after the wanted parameter
@@ -48,11 +39,17 @@ namespace LNCrawler.Views
 
             var vm = new VMNovelInfoPage(novelSlug, sourceSlug);
             DataContext = vm;
+
+            Window window = Window.GetWindow(this);
+            if (window != null)
+            {
+                window.Title = vm.Novel?.Title ?? "LNCrawler";
+            }
         }
 
         private void OpenUrlInBrowser(string url)
         {
-           Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
 
         private void OpenSourceWebsite(object sender, RoutedEventArgs e)

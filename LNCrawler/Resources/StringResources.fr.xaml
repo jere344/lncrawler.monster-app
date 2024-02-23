@@ -6,4 +6,17 @@
     <system:String x:Key="seeMore">Voir plus</system:String>
     <system:String x:Key="previous">Précédent</system:String>
     <system:String x:Key="next">Suivant</system:String>
+    <system:String x:Key="author">Auteur:</system:String>
+    <system:String x:Key="rating">Note:</system:String>
+    <system:String x:Key="chapterCount">Chapitres:</system:String>
+    <system:String x:Key="language">Langue:</system:String>
+    <system:String x:Key="views">Vues:</system:String>
+    <system:String x:Key="first">Premier:</system:String>
+    <system:String x:Key="lastUpdateDate">Dernière màj:</system:String>
+    <system:String x:Key="rank">Rang:</system:String>
+    <system:String x:Key="lncrawler">LNCrawler:</system:String>
+    <system:String x:Key="source">Source:</system:String>
+    <system:String x:Key="openSource">Ouvrir la source</system:String>
+    <system:String x:Key="openLNCrawler">Ouvrir LNCrawler</system:String>
+    <system:String x:Key="summary">Synopsis:</system:String>
 </ResourceDictionary>

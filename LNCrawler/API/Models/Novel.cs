@@ -21,7 +21,8 @@ public class Novel
     private string _Cover { get; set; }
     public string Cover
     {
-        get => "https://api.lncrawler.monster/image/" + _Cover;
+        // The api returns a full size image, but it also has a smaller version automatically generated
+        get => "https://api.lncrawler.monster/image/" + _Cover.Replace(".jpg", ".sm.jpg");
     }
 
     [JsonProperty("current_week_clicks")]
